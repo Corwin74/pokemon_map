@@ -16,3 +16,12 @@ class PokemonEntity(models.Model):
                                 )
     lat = models.DecimalField(max_digits=10, decimal_places=7)
     lon = models.DecimalField(max_digits=10, decimal_places=7)
+    appeared_at = models.DateTimeField(
+                                        blank=True,
+                                        null=True,
+    )
+    disappeared_at = models.DateTimeField(
+                                        blank=True,
+                                        null=True,
+    )
+
