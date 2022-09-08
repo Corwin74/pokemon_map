@@ -24,4 +24,24 @@ class PokemonEntity(models.Model):
                                         blank=True,
                                         null=True,
     )
-
+    level = models.PositiveSmallIntegerField(
+                                             blank=True,
+                                             null=True
+    )
+    health = models.PositiveSmallIntegerField(
+                                             blank=True,
+                                             null=True
+    )
+    strength = models.PositiveSmallIntegerField(
+                                             blank=True,
+                                             null=True
+    )
+    defence = models.PositiveSmallIntegerField(
+                                             blank=True,
+                                             null=True
+    )
+    stamina = models.PositiveSmallIntegerField(
+                                             blank=True,
+                                             null=True
+    )
+    
