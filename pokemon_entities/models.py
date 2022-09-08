@@ -10,5 +10,9 @@ class Pokemon(models.Model):
 
 
 class PokemonEntity(models.Model):
+    pokemon = models.ForeignKey(
+                                Pokemon,
+                                on_delete=models.CASCADE,
+                                )
     lat = models.DecimalField(max_digits=10, decimal_places=7)
     lon = models.DecimalField(max_digits=10, decimal_places=7)
