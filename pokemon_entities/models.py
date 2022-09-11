@@ -9,6 +9,13 @@ class Pokemon(models.Model):
     description = models.TextField(
                                    verbose_name='описание'
     )
+    parent = models.ForeignKey(
+                               'self', 
+                               on_delete=models.CASCADE,
+                               null=True,
+                               blank=True,
+                               verbose_name='Из кого эволюционировал',
+    )
 
     def __str__(self):
         return self.title_ru
