@@ -46,7 +46,9 @@ def show_active_pokemons(request):
         pokemons_on_page.append({
             'pokemon_id': pokemon.id,
             'img_url': pokemon.image.url,
-            'title_ru': pokemon.title,
+            'title_ru': pokemon.title_ru,
+            'title_jp': pokemon.title_jp,
+            'title_en': pokemon.title_en,
         })
 
     return render(request, 'mainpage.html', context={
@@ -72,7 +74,9 @@ def show_pokemon(request, pokemon_id):
     pokemon = {
                'pokemon_id': pokemon_id,
                'img_url': requested_pokemon.image.url,
-               'title_ru': requested_pokemon.title,
+               'title_ru': requested_pokemon.title_ru,
+               'title_jp': requested_pokemon.title_jp,
+               'title_en': requested_pokemon.title_en,
                'description': requested_pokemon.description,
     }
     return render(request, 'pokemon.html', context={
