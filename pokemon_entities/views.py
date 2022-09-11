@@ -31,7 +31,7 @@ def add_pokemon(folium_map, lat, lon, image_url=DEFAULT_IMAGE_URL):
 def show_active_pokemons(request):
     folium_map = folium.Map(location=MOSCOW_CENTER, zoom_start=12)
     for pokemon in Pokemon.objects.all():
-        for pokemon_entity in pokemon.pokemonentity_set.all():
+        for pokemon_entity in pokemon.entities.all():
             time_now = localtime()
             if pokemon_entity.disappeared_at > time_now and pokemon_entity.appeared_at < time_now:
                 add_pokemon(
@@ -64,7 +64,7 @@ def show_pokemon(request, pokemon_id):
         return HttpResponseNotFound('<h1>Такой покемон не найден</h1>')
 
     folium_map = folium.Map(location=MOSCOW_CENTER, zoom_start=12)
-    for pokemon_entity in requested_pokemon.pokemonentity_set.all():
+    for pokemon_entity in requested_pokemon.entities.all():
         add_pokemon(
                     folium_map,
                     pokemon_entity.lat,
@@ -85,7 +85,13 @@ def show_pokemon(request, pokemon_id):
                                 'title_ru': requested_pokemon.parent.title_ru,
                                 'img_url': requested_pokemon.parent.image.url,
                                 }
-
+    if descendant_pokemon := requested_pokemon.descendant.first():
+        pokemon['next_evolution'] = {
+                                'pokemon_id': descendant_pokemon.id,
+                                'title_ru': descendant_pokemon.title_ru,
+                                'img_url': descendant_pokemon.image.url,
+                                }
+    
     return render(request, 'pokemon.html', context={
         'map': folium_map._repr_html_(), 'pokemon': pokemon
     })

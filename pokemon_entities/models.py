@@ -15,6 +15,7 @@ class Pokemon(models.Model):
                                null=True,
                                blank=True,
                                verbose_name='Из кого эволюционировал',
+                               related_name='descendant',
     )
 
     def __str__(self):
@@ -25,6 +26,7 @@ class PokemonEntity(models.Model):
     pokemon = models.ForeignKey(
                                 Pokemon,
                                 on_delete=models.CASCADE,
+                                related_name='entities'
                                 )
     lat = models.DecimalField(max_digits=10, decimal_places=7)
     lon = models.DecimalField(max_digits=10, decimal_places=7)
