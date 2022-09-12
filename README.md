@@ -36,6 +36,7 @@ python manage.py createsuperuser
 ```sh
 python3 manage.py runserver
 ```
+Сайт будет доступен по адресу http://127.0.0.1:8000  
 Доступ в админку http://127.0.0.1:8000/admin  
 Реквизиты входа, созданный ранее суперпользователь.
 
