@@ -6,13 +6,11 @@ class Pokemon(models.Model):
     title_jp = models.CharField(
                                 'имя (яп.)',
                                 max_length=200,
-                                null=True,
                                 blank=True,
     )
     title_en = models.CharField(
                                 'имя (англ.)',
                                 max_length=200,
-                                null=True,
                                 blank=True,
     )
     image = models.ImageField(
@@ -22,7 +20,6 @@ class Pokemon(models.Model):
     )
     description = models.TextField(
                                    'описание',
-                                   null=True,
                                    blank=True,
     )
     parent = models.ForeignKey(
