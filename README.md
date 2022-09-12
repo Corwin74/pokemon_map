@@ -23,12 +23,21 @@
 ```sh
 pip install -r requirements.txt
 ```
-
+Создайте базу данных
+```sh
+python manage.py migrate
+```
+Создайте суперпользователя:
+```sh
+python manage.py createsuperuser
+```
 Запустите разработческий сервер
 
 ```sh
 python3 manage.py runserver
 ```
+Доступ в админку http://127.0.0.1:8000/admin  
+Реквизиты входа, созданный ранее суперпользователь.
 
 ### Переменные окружения
 
